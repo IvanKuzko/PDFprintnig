@@ -52,5 +52,4 @@ class PDFPrintingTool(App):
         return Builder.load_string(KV)
 
 
-if __name__ == '__main__':
-    PDFPrintingTool().run()
+
