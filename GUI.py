@@ -43,7 +43,7 @@ class FirstWindow(Screen):
 
     def make_pdf(self):
         print()
-        main.save_pdf(self.ids.name_of_document.text,self.inversion)
+        pdf_and_pil.save_pdf(self.ids.name_of_document.text,self.inversion)
 
 
 class PDFPrintingTool(App):
