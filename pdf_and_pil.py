@@ -3,7 +3,7 @@ import fitz
 import io
 from PIL import Image
 import PIL.ImageOps
-
+import dominant_color
 
 zoom = 10  # zoom for pixmap, for increasing picture quality
 mat = fitz.Matrix(zoom, zoom)  # fitz.Matrix will add .get_pixmap
@@ -33,7 +33,8 @@ def make_pil(page,inversion):
     bytes = pixmap.tobytes(output="png")
     io_ = io.BytesIO(bytes)
     slide = Image.open(io_)
-    if inversion == False:
+    color = dominant_color.get_dominant(slide)
+    if inversion == False and color < (250, 250, 250):
         slide = invert(slide)
     slide.thumbnail(blank_size)
     return slide
